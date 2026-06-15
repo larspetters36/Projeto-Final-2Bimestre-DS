@@ -8,6 +8,14 @@ public class Caminhao extends Veiculo {
         this.eixos = eixos;
     }
 
+    public int getEixos() { 
+        return eixos; 
+    }
+
+    public void setEixos(int eixos) { 
+        this.eixos = eixos; 
+    }
+
     @Override
     public double calcularCustoFrete(double distanciaKm) {
         double custoBase = 0;

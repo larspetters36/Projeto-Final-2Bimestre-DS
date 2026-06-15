@@ -1,3 +1,5 @@
+// fazer RF04, RF05 E RN05
+
 package javalogexpressapp;
 
 import java.util.ArrayList;
@@ -26,7 +28,11 @@ abstract class Veiculo {
 
     // Método polimórfico que cada tipo de veículo calculará de sua forma
     public abstract double calcularCustoFrete(double distanciaKm);
-    double distanciaKm = 100;
+
+    @Override // Sobrescrevendo toString da classe Object
+    public String toString() {
+        return String.format("Placa: %s | Modelo: %s | Capacidade de Carga: %.2f kg", placa, modelo, capacidadeCargaKg);
+    }
 }
 
 // ====================================================================
@@ -42,21 +48,21 @@ public class JavaLogExpressApp {
 
         while (opcao != 0) {
             System.out.println("\n--- JAVALOG EXPRESS - SISTEMA DE FROTA ---");
-            System.out.println("1. Cadastrar Van no Sistema");
-            System.out.println("2. Cadastrar Caminhão no Sistema");
-            System.out.println("3. Listar Veículos da Frota e Custos de Frete Simulados");
-            System.out.println("0. Encerrar Sistema");
+            System.out.println("-   1. Cadastrar Van no Sistema");
+            System.out.println("-   2. Cadastrar Caminhão no Sistema");
+            System.out.println("-   3. Listar Veículos da Frota e Custos de Frete Simulados");
+            System.out.println("-   0. Encerrar Sistema");
             System.out.print("Escolha uma opção: ");
             opcao = leitor.nextInt();
             leitor.nextLine(); // Limpar buffer do Enter
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Digite a Placa da Van: ");
+                    System.out.print("-   Digite a Placa da Van: ");
                     String pVan = leitor.nextLine();
-                    System.out.print("Digite o Modelo: ");
+                    System.out.print("-   Digite o Modelo: ");
                     String mVan = leitor.nextLine();
-                    System.out.print("Capacidade de Carga (kg): ");
+                    System.out.print("-   Capacidade de Carga (kg): ");
                     double cVan = leitor.nextDouble();
 
                     frota.add(new Van(pVan, mVan, cVan));
@@ -66,13 +72,13 @@ public class JavaLogExpressApp {
                     break;
 
                 case 2:
-                    System.out.print("Digite a Placa do Caminhão: ");
+                    System.out.print("-   Digite a Placa do Caminhão: ");
                     String pCam = leitor.nextLine();
-                    System.out.print("Digite o Modelo: ");
+                    System.out.print("-   Digite o Modelo: ");
                     String mCam = leitor.nextLine();
-                    System.out.print("Capacidade de Carga (kg): ");
+                    System.out.print("-   Capacidade de Carga (kg): ");
                     double cCam = leitor.nextDouble();
-                    System.out.print("Número de Eixos do Caminhão: ");
+                    System.out.print("-    Número de Eixos do Caminhão: ");
                     int eixos = leitor.nextInt();
                     
                     frota.add(new Caminhao(pCam, mCam, cCam, eixos));
@@ -85,6 +91,11 @@ public class JavaLogExpressApp {
                     if (frota.isEmpty()) {
                         System.out.println("Nenhum veículo cadastrado na frota.");
                     } else {
+                        for (Veiculo veiculo : frota) {
+                            System.out.println(veiculo.toString());
+                            System.out.printf("Custo de Frete para 100 km: R$ %.2f\n", veiculo.calcularCustoFrete(100));
+                            System.out.println("-----------------------------------");
+                        }
                         // TODO: Percorrer a frota exibindo os dados e o cálculo do frete polimórfico
                     }
                     break;
