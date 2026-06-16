@@ -10,15 +10,15 @@ import java.util.Scanner;
 abstract class Veiculo {
     private String placa;
     private String modelo;
-    protected double capacidadeCargaKg;
+    private double capacidadeCargaKg;
 
     public Veiculo(String placa, String modelo, double capacidadeCargaKg) {
         this.placa = placa;
         this.modelo = modelo;
-        this.capacidadeCargaKg = capacityValida(capacidadeCargaKg);
+        this.capacidadeCargaKg = capacidadeValida(capacidadeCargaKg);
     }
 
-    private double capacityValida(double carga) {
+    private double capacidadeValida(double carga) {
         return carga > 0 ? carga : 100; // Validação simples de encapsulamento
     }
 

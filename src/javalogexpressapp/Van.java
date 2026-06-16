@@ -7,7 +7,7 @@ public class Van extends Veiculo {
 
     @Override
     public double calcularCustoFrete(double distanciaKm) {
-        if(capacidadeCargaKg > 1000) {
+        if(getCapacidadeCargaKg() > 1000) { 
             double custoBase = 30;
             double custoPorKm = 2.50; 
             return custoBase + (custoPorKm * distanciaKm);
