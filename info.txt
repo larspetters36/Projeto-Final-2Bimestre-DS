@@ -1,0 +1,3 @@
+Projeto final do segundo bimestre no componente 'Desenvolvimentos de Sistemas'. Esse projeto simula o frete de uma transportadora com base em distância da corrida, veículo do transporte e peso do conteúdo a ser transportado.
+
+Obs: Futuramente implementar janela gráfica no projeto.
